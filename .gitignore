@@ -1,0 +1,20 @@
+# dataset
+dataset/
+test/
+train/
+archive.zip
+
+# env
+fa_em_re
+
+# files
+*.csv
+*.py
+*.json
+
+# models
+best_vit.pth
+best_vit2.pth
+
+# old
+output*.png
