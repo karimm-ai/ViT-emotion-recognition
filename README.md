@@ -3,13 +3,12 @@
 Facial Emotion Recognition: https://www.kaggle.com/datasets/sujaykapadnis/emotion-recognition-dataset/data
 
 6 Classes:
-
-- Ahegao: 1205 images
-- Angry: 1313 images
-- Happy: 3740 images
-- Neutral: 4027 images
-- Sad: 3934 images
-- Surprise: 1234 images
+- [0] Ahegao: 1205 images
+- [1] Angry: 1313 images
+- [2] Happy: 3740 images
+- [3] Neutral: 4027 images
+- [4] Sad: 3934 images
+- [5] Surprise: 1234 images
 
 Total images: 15453
 
@@ -18,10 +17,10 @@ Total images: 15453
 ### **Dataset Pre-processing**
 
 
-#### **No handling for classes imbalances**
-#### **Image sizes are standardized to 300x300:** The median size of images is 293x349, I chose 300x300 as the standard for all adding padding for those smaller than the standard and cropping those that are larger
-#### **Images split into 75% Train & 25% Test**
-#### **Transformations on training set:** Including [Horizontal flip, Affine, Rotation, Normalization, ..]
+- #### **No handling for classes imbalances**
+- #### **Image sizes are standardized to 300x300:** The median size of images is 293x349, I chose 300x300 as the standard for all adding padding for those smaller than the standard and cropping those that are larger
+- #### **Images split into 75% Train & 25% Test**
+- #### **Transformations on training set:** Including [Horizontal flip, Affine, Rotation, Normalization, ..]
 
 ---
 
@@ -58,8 +57,8 @@ A small MLP head predicts the class probabilities using:
 - Embedding dimension: 192
 - Transformer encoder layers: 8
 - Attention heads: 3
-- Classification token
-- Position embeddings
+
+
 
 Unlike CNNs, ViTs process images as sequences of patches and learn relationships using self-attention mechanisms.
 
@@ -67,10 +66,10 @@ Unlike CNNs, ViTs process images as sequences of patches and learn relationships
 
 ### **Training Setup**
 
-Optimizer: AdamW with weight decay applied
-Loss function: CrossEntropy with label smoothing for better generalization
-Learning Rate Scheduling
-Epochs: 100
+- Optimizer: AdamW with weight decay applied
+- Loss function: CrossEntropy with label smoothing for better generalization
+- Learning Rate Scheduling
+- Epochs: 100
 
 ---
 
@@ -94,6 +93,7 @@ Epochs: 100
 | 100   | 0.8530     | 0.7788    | 0.6811   |
 
 
+
 Despite not using pretrained weights, the model achieves ~68% test accuracy.
 
 ---
@@ -112,7 +112,7 @@ LR Scheduler|     -      |    Yes    |
 Dataset Augmentation| -  |    Yes    |
 Embedding Dims|  768     |    192    |
 Patch Size  |   20x20    |   15x15   |
-Results|![Exp1](vit1.png)|![Exp1](vit3_curves.png)|
+Learning Curves|![Exp1](vit1.png)|![Exp1](vit3_curves.png)|
 
 ---
 
@@ -121,6 +121,8 @@ Results|![Exp1](vit1.png)|![Exp1](vit3_curves.png)|
 **Confusion Matrix**
 
 ![confusion matrix](vit3_cm.png)
+
+
 
 **Recal, Precision & F1 Scores**
 
